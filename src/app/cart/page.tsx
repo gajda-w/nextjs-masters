@@ -1,5 +1,27 @@
-export default function Cart() {
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { CartList } from "@/components/organisms/CartList";
+import { getCartById } from "@/api/cart";
+
+export default async function CartPage() {
+	const cartId = cookies().get("cartId")?.value;
+
+	if (!cartId) {
+		redirect("/");
+	}
+
+	const cart = await getCartById(cartId);
+
+	if (!cart) {
+		redirect("/");
+	}
+
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-between p-24">Cart page</main>
+		<>
+			<h1>Order #{cart.id} summary</h1>
+			<div className="mt-8 flow-root max-w-lg">
+				<CartList items={cart.items} />
+			</div>
+		</>
 	);
 }

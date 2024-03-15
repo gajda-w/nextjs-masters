@@ -1,48 +1,27 @@
-import { ProductListItem } from "@/components/ProductListItem";
+import { ProductsList } from "@/components/organisms/ProductsList";
+import { CollectionsList } from "@/components/organisms/CollectionsList";
+import { CategoriesList } from "@/components/organisms/CategoriesList";
+import { getCategories, getCollections, getProducts } from "@/api/products";
 
-const products = [
-	{
-		id: 1,
-		name: "Product 1",
-		image:
-			"https://storefront-nextjs-wine.vercel.app/_next/image?url=https%3A%2F%2Fstore-jibjen8y.eu.saleor.cloud%2Fmedia%2Fthumbnails%2Fproducts%2Fsaleor-ascii-shirt-front_thumbnail_4096.png&w=256&q=75",
-		price: 100,
-		category: "Category 1",
-	},
-	{
-		image:
-			"https://storefront-nextjs-wine.vercel.app/_next/image?url=https%3A%2F%2Fstore-jibjen8y.eu.saleor.cloud%2Fmedia%2Fthumbnails%2Fproducts%2Fsaleor-ascii-shirt-front_thumbnail_4096.png&w=256&q=75",
-		id: 2,
-		name: "Product 2",
-		price: 200,
-		category: "Category 1",
-	},
-	{
-		image:
-			"https://storefront-nextjs-wine.vercel.app/_next/image?url=https%3A%2F%2Fstore-jibjen8y.eu.saleor.cloud%2Fmedia%2Fthumbnails%2Fproducts%2Fsaleor-ascii-shirt-front_thumbnail_4096.png&w=256&q=75",
-		id: 3,
-		name: "Product 3",
-		price: 300,
-		category: "Category 2",
-	},
-	{
-		image:
-			"https://storefront-nextjs-wine.vercel.app/_next/image?url=https%3A%2F%2Fstore-jibjen8y.eu.saleor.cloud%2Fmedia%2Fthumbnails%2Fproducts%2Fsaleor-ascii-shirt-front_thumbnail_4096.png&w=256&q=75",
-		id: 3,
-		name: "Product 3",
-		price: 300,
-		category: "Category 2",
-	},
-];
+export default async function Home() {
+	const products = await getProducts(4);
+	const categories = await getCategories(3);
+	const collections = await getCollections(3);
 
-export default function Home() {
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-between p-24">
-			<ul data-testid="products-list" className="flex flex-wrap gap-[20px]">
-				{products.map((product) => (
-					<ProductListItem product={product} key={product.id} />
-				))}
-			</ul>
-		</main>
+		<>
+			<section>
+				<h2>Most popular</h2>
+				<ProductsList products={products.data} />
+			</section>
+			<section className="mt-24">
+				<h2>Most popular categories</h2>
+				<CategoriesList categories={categories} />
+			</section>
+			<section className="mt-24">
+				<h2>Our Collections</h2>
+				<CollectionsList collections={collections} />
+			</section>
+		</>
 	);
 }

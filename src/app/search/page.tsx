@@ -1,7 +1,22 @@
-export default function Search() {
+import { getProductsBySearch } from "@/api/products";
+import { searchCharactersLimit } from "@/consts";
+import { ProductsList } from "@/components/organisms/ProductsList";
+
+export default async function SearchPage({ searchParams }: { searchParams: { query: string } }) {
+	const products =
+		searchParams.query && searchParams.query.length >= searchCharactersLimit
+			? await getProductsBySearch(searchParams.query)
+			: [];
+
+	const total = products.length;
+
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-between p-24">
-			search page
-		</main>
+		<>
+			<div>
+				Found {total} items for phrase &quot;{searchParams.query}
+				&quot;
+			</div>
+			<ProductsList products={products} />
+		</>
 	);
 }

@@ -1,0 +1,15 @@
+fragment CartListItemFragment on CartItem {
+	product {
+		id
+		name
+		price
+		images {
+			url
+			alt
+		}
+		categories {
+			name
+		}
+	}
+	quantity
+}

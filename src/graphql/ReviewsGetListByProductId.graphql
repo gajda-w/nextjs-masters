@@ -1,0 +1,7 @@
+query ReviewsGetListByProductId($id: ID!) {
+	product(id: $id) {
+		reviews {
+			...ReviewListItemFragment
+		}
+	}
+}

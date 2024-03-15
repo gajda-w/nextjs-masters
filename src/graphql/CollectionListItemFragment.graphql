@@ -1,0 +1,23 @@
+fragment CollectionListItemFragment on Collection {
+	name
+	id
+	description
+	slug
+	products {
+		name
+		price
+		images {
+			alt
+			url
+		}
+		id
+		description
+		categories {
+			name
+			slug
+		}
+		reviews {
+			rating
+		}
+	}
+}

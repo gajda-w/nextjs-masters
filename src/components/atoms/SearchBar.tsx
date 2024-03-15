@@ -32,7 +32,7 @@ export const SearchBar = () => {
 					onInput={debounce(handleInput, 500)}
 					id="search"
 					name="search"
-					className="block w-full py-1.5 pl-10 pr-3 sm:text-sm sm:leading-6"
+					className="block w-full py-1.5 pl-10 pr-3"
 					placeholder="Search"
 					type="search"
 				/>

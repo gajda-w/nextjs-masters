@@ -1,0 +1,8 @@
+query ProductsGetListByCategorySlug($slug: String!) {
+	category(slug: $slug) {
+		name
+		products {
+			...ProductListItemFragment
+		}
+	}
+}

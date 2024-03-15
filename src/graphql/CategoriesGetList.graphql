@@ -1,0 +1,7 @@
+query CategoriesGetList($take: Int, $skip: Int) {
+	categories(take: $take, skip: $skip) {
+		data {
+			...CategoryListItemFragment
+		}
+	}
+}

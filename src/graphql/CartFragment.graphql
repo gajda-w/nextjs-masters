@@ -1,0 +1,6 @@
+fragment CartFragment on Cart {
+	id
+	items {
+		...CartListItemFragment
+	}
+}

@@ -1,0 +1,12 @@
+mutation CartAddItem(
+	$productId: String!
+	$cartId: ID!
+	$quantity: Int!
+) {
+	cartAddItem(
+		id: $cartId
+		input: { item: { productId: $productId, quantity: $quantity } }
+	) {
+		id
+	}
+}

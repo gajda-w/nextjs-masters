@@ -1,7 +1,11 @@
-export default function Collections() {
+import { getCollections } from "@/api/products";
+import { CollectionsList } from "@/components/organisms/CollectionsList";
+
+export default async function Collections() {
+	const collections = await getCollections(0);
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-between p-24">
-			Collections page
-		</main>
+		<>
+			<CollectionsList collections={collections} />
+		</>
 	);
 }

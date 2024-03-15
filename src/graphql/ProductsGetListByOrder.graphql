@@ -1,0 +1,20 @@
+query ProductsGetListByOrder(
+	$take: Int
+	$skip: Int
+	$orderBy: ProductSortBy
+	$order: SortDirection
+) {
+	products(
+		take: $take
+		skip: $skip
+		orderBy: $orderBy
+		order: $order
+	) {
+		data {
+			...ProductListItemFragment
+		}
+		meta {
+			total
+		}
+	}
+}

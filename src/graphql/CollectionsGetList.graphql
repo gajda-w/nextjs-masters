@@ -1,0 +1,27 @@
+query CollectionsGetList($take: Int, $skip: Int) {
+	collections(take: $take, skip: $skip) {
+		data {
+			name
+			id
+			description
+			slug
+			products {
+				name
+				price
+				images {
+					alt
+					url
+				}
+				id
+				description
+				categories {
+					name
+					slug
+				}
+				reviews {
+					rating
+				}
+			}
+		}
+	}
+}
