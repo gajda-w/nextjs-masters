@@ -1,4 +1,4 @@
-import { getReviewsByProductId } from "@/api/reviews";
+import { getReviewsByProductId } from "@/utils/reviews";
 import { ReviewList } from "@/components/organisms/ReviewList";
 
 export const Reviews = async ({ productId }: { productId: string }) => {

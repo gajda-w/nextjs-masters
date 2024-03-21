@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { type Route, type Metadata } from "next";
 import { Pagination } from "@/components/molecules/Pagination";
 import { ProductsList } from "@/components/organisms/ProductsList";
-import { getProductsByCategorySlug } from "@/api/products";
+import { getProductsByCategorySlug } from "@/utils/products";
 
 export async function generateMetadata({
 	params,

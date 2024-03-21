@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidateTag } from "next/cache";
-import { createReview } from "@/api/reviews";
+import { createReview } from "@/utils/reviews";
 
 export async function createReviewAction(
 	productId: string,
@@ -11,14 +11,7 @@ export async function createReviewAction(
 	rating: number,
 	email: string,
 ) {
-	await createReview(
-		productId,
-		author,
-		title,
-		description,
-		rating,
-		email,
-	);
+	await createReview(productId, author, title, description, rating, email);
 
 	revalidateTag("reviews");
 }

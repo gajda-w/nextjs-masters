@@ -1,7 +1,7 @@
 import { ShoppingBag } from "lucide-react";
 import { cookies } from "next/headers";
 import Link from "next/link";
-import { getCartById } from "@/api/cart";
+import { getCartById } from "@/utils/cart";
 
 export const ShoppingCart = async () => {
 	const cartId = cookies().get("cartId")?.value as string;

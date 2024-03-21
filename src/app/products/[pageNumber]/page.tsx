@@ -1,13 +1,13 @@
 import { type Route } from "next";
-import { getProducts, getProductsByOrder } from "@/api/products";
+import { getProducts, getProductsByOrder } from "@/utils/products";
 import { type InputMaybe, type ProductSortBy, type SortDirection } from "@/gql/graphql";
 import { SortSelect } from "@/components/atoms/SortSelect";
-import { paginationItemsPerPage } from "@/consts";
+import { PAGINATION_ITEMS_PER_PAGE } from "@/consts";
 import { Pagination } from "@/components/molecules/Pagination";
 import { ProductsList } from "@/components/organisms/ProductsList";
 
 export async function generateStaticParams() {
-	const products = await getProducts(paginationItemsPerPage);
+	const products = await getProducts(PAGINATION_ITEMS_PER_PAGE);
 
 	const numberOfStaticPages = 3;
 	const total = products.data.length;
@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 		return [];
 	}
 
-	const numberOfAllPages = Math.ceil(total / paginationItemsPerPage);
+	const numberOfAllPages = Math.ceil(total / PAGINATION_ITEMS_PER_PAGE);
 
 	const loopCount = Math.min(numberOfStaticPages, numberOfAllPages);
 
@@ -34,19 +34,19 @@ export default async function ProductsPage({
 	params: { pageNumber: string };
 	searchParams: { orderBy: string; order: string };
 }) {
-	const skip = (Number(params.pageNumber) - 1) * paginationItemsPerPage;
+	const skip = (Number(params.pageNumber) - 1) * PAGINATION_ITEMS_PER_PAGE;
 
 	const { orderBy, order } = searchParams;
 
 	const products =
 		orderBy && order
 			? await getProductsByOrder(
-					paginationItemsPerPage,
+					PAGINATION_ITEMS_PER_PAGE,
 					skip,
 					orderBy as InputMaybe<ProductSortBy>,
 					order as InputMaybe<SortDirection> | undefined,
 				)
-			: await getProducts(paginationItemsPerPage, skip);
+			: await getProducts(PAGINATION_ITEMS_PER_PAGE, skip);
 
 	return (
 		<>
@@ -61,7 +61,7 @@ export default async function ProductsPage({
 			<ProductsList products={products.data} />
 			<Pagination
 				total={products.meta.total}
-				itemsPerPage={paginationItemsPerPage}
+				itemsPerPage={PAGINATION_ITEMS_PER_PAGE}
 				route={"/products" as Route}
 				searchParams={
 					searchParams.orderBy && searchParams.order

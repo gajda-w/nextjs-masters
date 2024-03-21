@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { type Metadata } from "next";
 import { SingleCollection } from "@/components/organisms/SingleCollection";
-import { getProductsByCollectionSlug } from "@/api/products";
+import { getProductsByCollectionSlug } from "@/utils/products";
 
 export async function generateMetadata({
 	params,

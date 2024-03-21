@@ -1,4 +1,4 @@
-import { getProductsByCategorySlug } from "@/api/products";
+import { getProductsByCategorySlug } from "@/utils/products";
 import { ProductsList } from "@/components/organisms/ProductsList";
 
 export const RelatedProductList = async ({ slug }: { slug: string }) => {

@@ -1,4 +1,4 @@
-import { getCollections } from "@/api/products";
+import { getCollections } from "@/utils/products";
 import { CollectionsList } from "@/components/organisms/CollectionsList";
 
 export default async function Collections() {

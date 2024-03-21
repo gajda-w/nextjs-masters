@@ -2,7 +2,8 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Stripe from "stripe";
 import { CartList } from "@/components/organisms/CartList";
-import { getCartById } from "@/api/cart";
+import { getCartById } from "@/utils/cart";
+import { STRIPE_API_VERSION } from "@/consts";
 
 export default async function CartPage() {
 	const cartId = cookies().get("cartId")?.value;
@@ -25,7 +26,7 @@ export default async function CartPage() {
 		}
 
 		const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-			apiVersion: "2023-10-16",
+			apiVersion: STRIPE_API_VERSION,
 			typescript: true,
 		});
 
@@ -41,7 +42,7 @@ export default async function CartPage() {
 			},
 			line_items: cart.items.map((item) => ({
 				price_data: {
-					currency: "usd",
+					currency: "pln",
 					product_data: {
 						name: item.product.name,
 						// TODO add product description
