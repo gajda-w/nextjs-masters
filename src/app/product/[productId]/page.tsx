@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { SingleProduct } from "@/components/organisms/SingleProduct";
 import { RelatedProductList } from "@/components/organisms/RelatedProductList";
-import { getProductById } from "@/api/products";
+import { getProductById } from "@/utils/products";
 import { Reviews } from "@/components/organisms/Reviews";
 
 export async function generateMetadata({

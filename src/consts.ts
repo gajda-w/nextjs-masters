@@ -1,3 +1,5 @@
-export const searchCharactersLimit = 2;
+export const SEARCH_CHARACTERS_LIMIT = 2;
 
-export const paginationItemsPerPage = 4;
+export const PAGINATION_ITEMS_PER_PAGE = 4;
+
+export const STRIPE_API_VERSION = "2023-10-16";

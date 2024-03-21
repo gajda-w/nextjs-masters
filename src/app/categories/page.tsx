@@ -1,4 +1,4 @@
-import { getCategories } from "@/api/products";
+import { getCategories } from "@/utils/products";
 import { CategoriesList } from "@/components/organisms/CategoriesList";
 
 export default async function Collections() {

@@ -9,7 +9,7 @@ import {
 	findOrCreateCart,
 	getCartById,
 	removeItemFromCart,
-} from "@/api/cart";
+} from "@/utils/cart";
 
 export async function addProductToCartAction(formData: FormData) {
 	const productId = formData.get("productId") as string;

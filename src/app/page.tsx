@@ -1,7 +1,7 @@
 import { ProductsList } from "@/components/organisms/ProductsList";
 import { CollectionsList } from "@/components/organisms/CollectionsList";
 import { CategoriesList } from "@/components/organisms/CategoriesList";
-import { getCategories, getCollections, getProducts } from "@/api/products";
+import { getCategories, getCollections, getProducts } from "@/utils/products";
 
 export default async function Home() {
 	const products = await getProducts(4);

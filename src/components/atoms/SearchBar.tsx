@@ -4,7 +4,7 @@ import { SearchIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { debounce } from "@/utils";
-import { searchCharactersLimit } from "@/consts";
+import { SEARCH_CHARACTERS_LIMIT } from "@/consts";
 
 export const SearchBar = () => {
 	const router = useRouter();
@@ -13,7 +13,7 @@ export const SearchBar = () => {
 	const handleInput = () => {
 		const query = (inputRef.current as HTMLInputElement).value;
 
-		if (query.length >= searchCharactersLimit) {
+		if (query.length >= SEARCH_CHARACTERS_LIMIT) {
 			router.push(`/search?query=${query}`);
 		}
 	};
